@@ -35,6 +35,7 @@
   "scripts": {
     "start": "export PORT=8989 && cp .env.development .env.development.local; react-scripts start",
     "build": "cp .env.development .env.production.local; react-scripts build; rm -rf dist; mv -f build dist",
+    "build:remote": "cp .env.development .env.production.local; react-scripts build; rm -rf dist; mv -f build dist;scp -r dist root@13.209.63.158:/home/msBlog/ms-web-front",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

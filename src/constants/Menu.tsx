@@ -20,7 +20,7 @@ export const defaultMenu = () => [
   },
   {
     index: 1,
-    title: "플러그인",
+    title: "이것은 테스트",
     itemId: "/plugin",
     subOpen: false,
     subNav: [
