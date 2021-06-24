@@ -49,7 +49,25 @@ const LoginFail: React.FC = () => {
           }
         }}
       >
-        로그인
+        구글 로그인
+      </div>
+      <span>/</span>
+      <div
+        onClick={async () => {
+          let timer: NodeJS.Timeout | null = null;
+          const url = `${process.env.REACT_APP_API_HOST}/auth/kakao/login`;
+          const newWin = window.open(url, "_blank", "width=500, height=600");
+          if (newWin) {
+            timer = setInterval(() => {
+              if (newWin.closed) {
+                fetchAuthUser();
+                if (timer) clearInterval(timer);
+              }
+            }, 500);
+          }
+        }}
+      >
+        카카오 로그인
       </div>
       {/* <Counter /> */}
     </DefaultContainer>

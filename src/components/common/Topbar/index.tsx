@@ -29,7 +29,7 @@ const Topbar: React.FC = () => {
         <S.Logo />
       </Link>
       {/* Supermarket */}
-      {user && <S.UserInfo>{user.email || "--"}</S.UserInfo>}
+      {user && <><img src={user.picture || ''}/><S.UserInfo>{user.email || "--"}</S.UserInfo></>}
     </S.Container>
   );
 };
