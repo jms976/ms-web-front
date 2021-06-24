@@ -27,7 +27,7 @@ const App = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <BrowserRouter>
           <Switch>
-            <PrivateRoute exact path={"/"} component={Main} />
+            <Route exact path={"/"} component={Main} />
             <PrivateRoute exact path={"/main"} component={Main} />
             <PrivateRoute exact path={"/customer"} component={Customer} />
 

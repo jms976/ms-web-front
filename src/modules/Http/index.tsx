@@ -17,6 +17,7 @@ axios.interceptors.response.use(
   (response: any) => {
     if (response.data.status === "error") {
       /** 인증 없을때 리다이렉트 */
+      console.log(response.data.message)
       if (response.data.message === "noauth") {
         window.location.href = "/login/fail";
       }
