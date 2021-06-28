@@ -28,8 +28,11 @@ const Topbar: React.FC = () => {
       <Link to="/main">
         <S.Logo />
       </Link>
-      {/* Supermarket */}
-      {user && <><img src={user.picture || ''}/><S.UserInfo>{user.email || "--"}</S.UserInfo></>}
+      
+      {user && <S.Profile>
+        <S.ProfileImage src={user.picture || ''}/>
+        <S.UserInfo>{user.email || "--"}</S.UserInfo>
+        </S.Profile>}
     </S.Container>
   );
 };

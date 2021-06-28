@@ -44,10 +44,21 @@ export const MenuSize = styled.span`
   }
 `;
 
+export const Profile = styled.div`
+  display: flex;
+  margin-left: auto;
+  margin-right: 20px;
+  margin-right: 20px;
+`;
 export const UserInfo = styled.div`
   display: flex;
+  flex-direction: row;
+  align-items: center;
   font-size: 12px;
-  margin-right: 20px;
-  margin-right: 20px;
-  margin-left: auto;
+`;
+
+export const ProfileImage = styled.img`
+  margin-right: 5px;
+  width: 25px;
+  border-radius: 1em;
 `;

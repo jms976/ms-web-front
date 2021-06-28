@@ -18,8 +18,6 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   component: Component,
   ...rest
 }) => {
-  console.log('aaaa')
-
   const dispatch = useAppDispatch();
 
   const [isAuthenticated, setAuthenticated] = useState(false);
