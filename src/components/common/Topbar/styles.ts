@@ -60,5 +60,5 @@ export const UserInfo = styled.div`
 export const ProfileImage = styled.img`
   margin-right: 5px;
   width: 25px;
-  border-radius: 1em;
+  border-radius: 2em;
 `;
