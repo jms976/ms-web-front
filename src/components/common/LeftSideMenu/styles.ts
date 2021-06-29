@@ -7,7 +7,7 @@ export const Container = styled.div<{ width?: number }>`
   flex-wrap: nowrap;
   position: fixed;
   flex-direction: column;
-  width: ${(props) => (props.width ? props.width + "px" : "150px")};
+  width: ${(props) => (typeof props.width === 'number' ? props.width + "px" : "150px")};
   height: calc(100% - 95px);
   top: 55px;
   right: 0;

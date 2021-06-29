@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { useAppSelector } from "app/hooks";
-import { selectCommon } from "features/commonSlice/commonSlice";
+import { leftMenuSizeChange, selectCommon } from "features/commonSlice/commonSlice";
 
 import { DefaultContainer } from "modules/Styled";
 import Topbar from "components/common/Topbar";

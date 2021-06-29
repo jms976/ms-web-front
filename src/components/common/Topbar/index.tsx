@@ -6,21 +6,41 @@ import {
   leftMenuSizeChange,
   selectCommon,
 } from "features/commonSlice/commonSlice";
+import useSize from "hooks/useWindowSize";
 
 import { HiOutlineViewList } from "react-icons/hi";
 
 import * as S from "./styles";
 
 const Topbar: React.FC = () => {
+  const windowWidth = useSize().width;
+
   const dispatch = useAppDispatch();
   const leftMenuSize = useAppSelector(selectCommon).leftMenuSize;
   const user = useAppSelector(selectCommon).authUser;
+
+  useEffect(() => {
+    if (windowWidth > 1000) {
+      dispatch(leftMenuSizeChange(150));
+    };
+    if (windowWidth <= 1000 && windowWidth > 500) {
+      dispatch(leftMenuSizeChange(50));
+    }
+    if (windowWidth <= 500) {
+      dispatch(leftMenuSizeChange(0));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [windowWidth]);
 
   return (
     <S.Container>
       <S.MenuSize
         onClick={() => {
-          dispatch(leftMenuSizeChange(leftMenuSize === 150 ? 50 : 150));
+          if (windowWidth <= 500) {
+            dispatch(leftMenuSizeChange(leftMenuSize === 150 ? 0 : 150));
+          } else {
+            dispatch(leftMenuSizeChange(leftMenuSize === 150 ? 50 : 150));
+          }
         }}
       >
         <HiOutlineViewList size={25} />
@@ -28,7 +48,7 @@ const Topbar: React.FC = () => {
       <Link to="/main">
         <S.Logo />
       </Link>
-      
+
       {user && <S.Profile>
         <S.ProfileImage src={user.picture || ''}/>
         <S.UserInfo>{user.email || "--"}</S.UserInfo>

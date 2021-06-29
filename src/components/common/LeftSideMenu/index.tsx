@@ -23,12 +23,14 @@ const LeftSideMenu: React.FC<RouteComponentProps> = ({
 
   const history = useHistory();
   const [menuItems, setMenuItems] = useState<any[]>(defaultMenu());
-  const [sizeState, setSizeState] = useState<"fold" | "unfold">(
-    commonState.leftMenuSize === 150 ? "unfold" : "fold"
+  const [sizeState, setSizeState] = useState<"fold" | "unfold" | "hide">(
+    commonState.leftMenuSize === 150 ? "unfold" 
+    : commonState.leftMenuSize === 50 ?  "fold" : "hide"
   );
 
   useEffect(() => {
-    setSizeState(commonState.leftMenuSize === 150 ? "unfold" : "fold");
+    setSizeState(commonState.leftMenuSize === 150 ? "unfold" 
+    : commonState.leftMenuSize === 50 ? "fold" : "hide");
   }, [commonState.leftMenuSize]);
 
   useEffect(() => {
@@ -85,119 +87,124 @@ const LeftSideMenu: React.FC<RouteComponentProps> = ({
   );
 
   return (
-    <S.Container width={commonState.leftMenuSize}>
-      {sizeState === "unfold" && (
-        <S.MenuList>
-          {menuItems &&
-            menuItems.map((item: any) => (
-              <S.Item
-                key={item.index}
-                className={classNames({
-                  active: pathname === item.itemId,
-                  itemWrapper: true,
-                })}
-              >
-                <div
-                  onClick={() => {
-                    handleClickMenu(item);
-                  }}
+    <>
+      {sizeState !== "hide" && (
+        <S.Container width={commonState.leftMenuSize}>
+        {sizeState === "unfold" && (
+          <S.MenuList>
+            {menuItems &&
+              menuItems.map((item: any) => (
+                <S.Item
+                  key={item.index}
+                  className={classNames({
+                    active: pathname === item.itemId,
+                    itemWrapper: true,
+                  })}
                 >
-                  <span className={"menuTitle"}>{item.title}</span>
-                  {item.subNav && (
-                    <span className={"menuFlag"}>
-                      {item.subOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                    </span>
-                  )}
-                </div>
-                <S.MenuList>
-                  {item.subNav &&
-                    item.subNav
-                      .filter((sub: any) => item.subOpen)
-                      .map((sub: any) => (
-                        <S.SubItem
-                          key={sub.index}
-                          onClick={() => {
-                            if (!sub.itemId) return;
-                            history.push(sub.itemId);
-                          }}
-                          className={classNames({
-                            active: pathname === sub.itemId,
-                            subItemWrapper: true,
-                          })}
-                        >
-                          {sub.title}
-                        </S.SubItem>
-                      ))}
-                </S.MenuList>
-              </S.Item>
-            ))}
-        </S.MenuList>
-      )}
-      {sizeState === "fold" && (
-        <S.FoldMenuList>
-          {menuItems &&
-            menuItems
-              .filter((item: any) => item.show)
-              .map((item: any) => {
-                if ("subNav" in item) {
-                  return item.subNav
-                    .filter((sub: any) => sub.show)
-                    .map((sub: any) => {
-                      const Icon = () => {
-                        return sub.icon;
-                      };
-                      return (
-                        <Tooltip
-                          content={sub.title}
-                          placement={"right-center"}
-                          color="#1a1a1a"
-                          borderColor="#377dff"
-                          bgColor="#fff"
-                          key={sub.index}
-                        >
-                          <span
+                  <div
+                    onClick={() => {
+                      handleClickMenu(item);
+                    }}
+                  >
+                    <span className={"menuTitle"}>{item.title}</span>
+                    {item.subNav && (
+                      <span className={"menuFlag"}>
+                        {item.subOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                      </span>
+                    )}
+                  </div>
+                  <S.MenuList>
+                    {item.subNav &&
+                      item.subNav
+                        .filter((sub: any) => item.subOpen)
+                        .map((sub: any) => (
+                          <S.SubItem
+                            key={sub.index}
                             onClick={() => {
+                              if (!sub.itemId) return;
                               history.push(sub.itemId);
                             }}
                             className={classNames({
                               active: pathname === sub.itemId,
+                              subItemWrapper: true,
                             })}
                           >
-                            <Icon />
-                          </span>
-                        </Tooltip>
-                      );
-                    });
-                } else {
-                  const Icon = () => {
-                    return item.icon;
-                  };
-                  return (
-                    <Tooltip
-                      content={item.title}
-                      placement={"right-center"}
-                      color="#1a1a1a"
-                      borderColor="#377dff"
-                      bgColor="#fff"
-                      key={item.index}
-                    >
-                      <span
-                        onClick={() => {
-                          history.push(item.itemId);
-                        }}
-                        className={classNames({
-                          active: pathname === item.itemId,
-                        })}
+                            {sub.title}
+                          </S.SubItem>
+                        ))}
+                  </S.MenuList>
+                </S.Item>
+              ))}
+          </S.MenuList>
+        )}
+        {sizeState === "fold" && (
+          <S.FoldMenuList>
+            {menuItems &&
+              menuItems
+                .filter((item: any) => item.show)
+                .map((item: any) => {
+                  if ("subNav" in item) {
+                    return item.subNav
+                      .filter((sub: any) => sub.show)
+                      .map((sub: any) => {
+                        const Icon = () => {
+                          return sub.icon;
+                        };
+                        return (
+                          <Tooltip
+                            content={sub.title}
+                            placement={"right-center"}
+                            color="#1a1a1a"
+                            borderColor="#377dff"
+                            bgColor="#fff"
+                            key={sub.index}
+                          >
+                            <span
+                              onClick={() => {
+                                history.push(sub.itemId);
+                              }}
+                              className={classNames({
+                                active: pathname === sub.itemId,
+                              })}
+                            >
+                              <Icon />
+                            </span>
+                          </Tooltip>
+                        );
+                      });
+                  } else {
+                    const Icon = () => {
+                      return item.icon;
+                    };
+                    return (
+                      <Tooltip
+                        content={item.title}
+                        placement={"right-center"}
+                        color="#1a1a1a"
+                        borderColor="#377dff"
+                        bgColor="#fff"
+                        key={item.index}
                       >
-                        <Icon />
-                      </span>
-                    </Tooltip>
-                  );
-                }
-              })}
-        </S.FoldMenuList>
+                        <span
+                          onClick={() => {
+                            history.push(item.itemId);
+                          }}
+                          className={classNames({
+                            active: pathname === item.itemId,
+                          })}
+                        >
+                          <Icon />
+                        </span>
+                      </Tooltip>
+                    );
+                  }
+                })}
+          </S.FoldMenuList>
+        )}
+      </S.Container>
       )}
-    </S.Container>
+    </>
+    
   );
 };
 
