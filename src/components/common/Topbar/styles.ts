@@ -4,7 +4,6 @@ import * as Icons from "constants/Icons";
 /** 탑바 커버 */
 export const Container = styled.div`
   display: flex;
-  display: flex;
   align-items: center;
   flex-wrap: nowrap;
   position: fixed;

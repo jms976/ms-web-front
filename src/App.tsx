@@ -21,6 +21,8 @@ const FAQ = lazy(() => import("./pages/FAQ"));
 const LoginSuccess = lazy(() => import("./pages/Login/Success"));
 const LoginFail = lazy(() => import("./pages/Login/Fail"));
 
+const Houses = lazy(() => import("./pages/Houses"));
+
 const App = () => {
   return (
     <>
@@ -48,6 +50,7 @@ const App = () => {
             <Route exact path={"/login/success"} component={LoginSuccess} />
             <Route exact path={"/login/fail"} component={LoginFail} />
             <Route exact path={"/noAuth"} component={Customer} />
+            <Route exact path={"/houses"} component={Houses} />
             <Route path="*">
               <div>NotFound</div>
             </Route>
