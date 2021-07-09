@@ -1,17 +1,25 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Header = styled.div`
   display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 54px;
-  z-index: 10;
-  background-color: #fcfcfc;
-  border-bottom: 1px solid #d8d8d8;
+  flex-direction: column;
+  background: pink;
+  h2 {
+    text-align: center;
+    margin: 10px;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+`;
+
+export const MainImg = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
 `;
 
 export const SliderWrapper = styled.div`

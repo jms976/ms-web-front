@@ -4,6 +4,8 @@ export { default as Logo3x } from "../images/msms.jpg";
 
 export { default as profileThumbnail } from "../images/thumb_profile_image.png";
 
+
+export { default as tomNjerry } from "../images/tomNjerry.png";
 export { default as menuItem01 } from "../images/menuItem01.png";
 export { default as menuItem02 } from "../images/menuItem02.png";
 export { default as menuItem03 } from "../images/menuItem03.png";

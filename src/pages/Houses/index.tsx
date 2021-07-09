@@ -19,7 +19,17 @@ const Houses: React.FC = () => {
   };
   return (
     <>
-      <h2> 맹멍 홈파티 메뉴판 2021.07.08 </h2>
+      <S.Header>
+        <h2> 맹멍 홈파티 메뉴판  </h2>
+      </S.Header>
+      <S.Content>
+        <span>시간: 2021.07.10 오후 5시</span>
+        <span>장소: 마포도화 아파트 113동 310호</span>
+
+      </S.Content>
+      <S.MainImg>
+        <img src={Icons.tomNjerry} height={"230px"} />
+      </S.MainImg>
       <S.SliderWrapper>
         <Slider {...settings}>
           <div>
