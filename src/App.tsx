@@ -26,7 +26,7 @@ const Houses = lazy(() => import("./pages/Houses"));
 const App = () => {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading..</div>}>
         <BrowserRouter>
           <Switch>
             <Route exact path={"/"} component={Main} />
