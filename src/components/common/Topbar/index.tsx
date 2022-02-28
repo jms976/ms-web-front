@@ -22,7 +22,7 @@ const Topbar: React.FC = () => {
   useEffect(() => {
     if (windowWidth > 1000) {
       dispatch(leftMenuSizeChange(150));
-    };
+    }
     if (windowWidth <= 1000 && windowWidth > 500) {
       dispatch(leftMenuSizeChange(50));
     }
@@ -46,13 +46,16 @@ const Topbar: React.FC = () => {
         <HiOutlineViewList size={25} />
       </S.MenuSize>
       <Link to="/main">
-        <S.Logo />
+        {/* <S.Logo /> */}
+        MyungSu
       </Link>
 
-      {user && <S.Profile>
-        <S.ProfileImage src={user.picture || ''}/>
-        <S.UserInfo>{user.email || "--"}</S.UserInfo>
-        </S.Profile>}
+      {user && (
+        <S.Profile>
+          <S.ProfileImage src={user.picture || ""} />
+          <S.UserInfo>{user.email || "--"}</S.UserInfo>
+        </S.Profile>
+      )}
     </S.Container>
   );
 };
