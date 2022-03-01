@@ -9,6 +9,12 @@ export const Header = styled.div`
     margin: 10px;
   }
 `;
+export const MenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: calc(100% - 40px);
+`;
 
 export const Content = styled.div`
   display: flex;
