@@ -61,3 +61,12 @@ export const ProfileImage = styled.img`
   width: 25px;
   border-radius: 2em;
 `;
+
+export const StieTitle = styled.div`
+  display: flex;
+  margin: 0 20px;
+  font-size: 20px;
+  font-weight: bold;
+  height: 100%;
+  align-items: center;
+`;

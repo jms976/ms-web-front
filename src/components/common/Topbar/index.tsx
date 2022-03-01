@@ -45,10 +45,12 @@ const Topbar: React.FC = () => {
       >
         <HiOutlineViewList size={25} />
       </S.MenuSize>
-      <Link to="/main">
-        {/* <S.Logo /> */}
-        MyungSu
-      </Link>
+      <S.StieTitle>
+        MS Story
+      </S.StieTitle>
+      {/* <Link to="/main">
+        <S.Logo />
+      </Link> */}
 
       {user && (
         <S.Profile>

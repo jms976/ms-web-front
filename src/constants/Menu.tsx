@@ -22,16 +22,17 @@ export const defaultMenu = () => [
         title: "테스트",
         itemId: "/private/customer",
         show: true,
-        icon: <BotTemplate size={20} />,
+        icon: <Qna size={20} />,
       },
       {
         index: 1,
         title: "메뉴판",
         itemId: "/private/houses",
         show: true,
-        icon: <ScenarioTemplate size={20} />,
+        icon: <Faq size={20} />,
       }
     ],
+    show: true,
   },
   {
     index: 1,

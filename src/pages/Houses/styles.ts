@@ -13,7 +13,7 @@ export const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 20px;
-  width: calc(100% - 40px);
+  width: 500px;
 `;
 
 export const Content = styled.div`
